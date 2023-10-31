@@ -1,0 +1,55 @@
+//html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Word Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Random Word Game</h1>
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" required>
+        <button onclick="generateWord()">Get Random Word</button>
+        <h2 id="output"></h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+//css
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+input, button {
+    margin: 10px;
+}
+
+
+//javascript
+
+function generateWord() {
+    const name = document.getElementById("name").value;
+  //here is the place were you can give any name to select random word 
+    const words = ["legend", "virus", "vargin", "guy", "soon you will get your parthner", "sexy", "cute"];
+    const randomIndex = Math.floor(Math.random() * words.length);
+    const randomWord = words[randomIndex];
+    const outputElement = document.getElementById("output");
+    outputElement.textContent = `${name}, your random word is: ${randomWord}`;
+}
+
+
