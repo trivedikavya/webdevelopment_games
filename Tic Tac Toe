@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic Tac Toe</title>
+<style>
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+  }
+
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+  }
+
+  .cell:hover {
+    background-color: #f0f0f0;
+  }
+</style>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <div class="board" id="board">
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+    <div class="cell" onclick="makeMove(this)"></div>
+  </div>
+  <script>
+    let currentPlayer = 'X';
+    let board = ['', '', '', '', '', '', '', '', ''];
+
+    function makeMove(cell) {
+      const index = Array.from(cell.parentNode.children).indexOf(cell);
+      if (board[index] === '' && !checkWinner()) {
+        cell.textContent = currentPlayer;
+        board[index] = currentPlayer;
+        if (checkWinner()) {
+          alert(currentPlayer + ' wins!');
+        } else if (board.every(cell => cell !== '')) {
+          alert('It\'s a draw!');
+        } else {
+          currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+        }
+      }
+    }
+
+    function checkWinner() {
+      const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6] // Diagonals
+      ];
+
+      for (const pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+  </script>
+</body>
+</html>
