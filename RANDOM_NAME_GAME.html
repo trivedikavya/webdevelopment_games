@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Word Game of KAVYA TRIVEDI</title>
+    <title>Random Word Game which is created by KAVYA TRIVEDI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <div class="container">
         <h1>Random Word Game</h1>
         <label for="name">Enter your name:</label>
@@ -32,7 +33,7 @@ body {
 .container {
     text-align: center;
 }
-
+//created by kavyatrivedi
 input, button {
     margin: 10px;
 }
@@ -42,10 +43,13 @@ input, button {
 <script>
 function generateWord() {
     const name = document.getElementById("name").value;
- 
+ /*CREATED BY KAVYA TRIVEDI*/
     const words = ["legend", "virus", "vargin", "guy", "soon you will get your parthner", "sexy", "cute"];
+    /*CREATED BY KAVYA TRIVEDI*/
     const randomIndex = Math.floor(Math.random() * words.length);
+    /*CREATED BY KAVYA TRIVEDI*/
     const randomWord = words[randomIndex];
+    /*CREATED BY KAVYA TRIVEDI*/
     const outputElement = document.getElementById("output");
     outputElement.textContent = `${name}, your random word is: ${randomWord}`;
 }
